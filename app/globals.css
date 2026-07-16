@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #050505;
+  --foreground: #f7f7f0;
+  --muted: #b7b7ad;
+  --muted-strong: #d8d8cf;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --surface-muted: #0b0b0b;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(245, 208, 0, 0.32);
+  --accent: #ffd500;
+  --accent-strong: #f5d000;
+  --accent-soft: rgba(245, 208, 0, 0.1);
+  --accent-foreground: #050505;
+  --section-alt: rgba(11, 11, 11, 0.55);
+  --header-bg: rgba(5, 5, 5, 0.82);
+  --header-menu-bg: rgba(5, 5, 5, 0.94);
+  --grid-line: rgba(255, 255, 255, 0.045);
+  --accent-glow: rgba(245, 208, 0, 0.18);
+  --body-gradient:
+    radial-gradient(circle at 80% 0%, rgba(245, 208, 0, 0.12), transparent 32rem),
+    radial-gradient(circle at 0% 35%, rgba(255, 213, 0, 0.07), transparent 28rem);
+  --hero-glow: radial-gradient(circle at 70% 20%, rgba(245, 208, 0, 0.18), transparent 30rem);
+  --soft-glow: rgba(255, 255, 255, 0.08);
+  --muted-08: rgba(183, 183, 173, 0.08);
+  --muted-20: rgba(183, 183, 173, 0.2);
+  --muted-35: rgba(183, 183, 173, 0.35);
+  --accent-55: rgba(245, 208, 0, 0.55);
+  --visual-panel: rgba(0, 0, 0, 0.5);
+  --visual-panel-soft: rgba(0, 0, 0, 0.35);
+  --project-visual: rgba(0, 0, 0, 0.3);
+  --footer-bg: #000000;
+  --glow-shadow: 0 0 50px rgba(245, 208, 0, 0.18);
+  --card-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+  --card-hover-shadow: 0 26px 80px rgba(0, 0, 0, 0.42);
+  --header-shadow: 0 18px 70px rgba(0, 0, 0, 0.32);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #fcfcf8;
+  --foreground: #111111;
+  --muted: #55574f;
+  --muted-strong: #34342f;
+  --surface: rgba(255, 255, 255, 0.82);
+  --surface-strong: #ffffff;
+  --surface-muted: #f6f4ea;
+  --border: rgba(23, 23, 23, 0.1);
+  --border-strong: rgba(212, 175, 55, 0.42);
+  --accent: #d4af37;
+  --accent-strong: #b88900;
+  --accent-soft: rgba(212, 175, 55, 0.13);
+  --accent-foreground: #17130a;
+  --section-alt: #f4f2e8;
+  --header-bg: rgba(252, 252, 248, 0.78);
+  --header-menu-bg: rgba(255, 255, 255, 0.94);
+  --grid-line: rgba(17, 17, 17, 0.055);
+  --accent-glow: rgba(212, 175, 55, 0.18);
+  --body-gradient:
+    radial-gradient(circle at 78% 0%, rgba(212, 175, 55, 0.16), transparent 32rem),
+    radial-gradient(circle at 0% 34%, rgba(224, 177, 0, 0.1), transparent 26rem),
+    linear-gradient(180deg, #ffffff 0%, #fcfcf8 38%, #f8f7ef 100%);
+  --hero-glow: radial-gradient(circle at 70% 18%, rgba(212, 175, 55, 0.2), transparent 30rem);
+  --soft-glow: rgba(212, 175, 55, 0.12);
+  --muted-08: rgba(85, 87, 79, 0.08);
+  --muted-20: rgba(85, 87, 79, 0.16);
+  --muted-35: rgba(85, 87, 79, 0.28);
+  --accent-55: rgba(212, 175, 55, 0.48);
+  --visual-panel: rgba(255, 255, 255, 0.78);
+  --visual-panel-soft: rgba(255, 255, 255, 0.64);
+  --project-visual: rgba(255, 255, 255, 0.72);
+  --footer-bg: #f6f4ea;
+  --glow-shadow: 0 18px 58px rgba(212, 175, 55, 0.22);
+  --card-shadow: 0 20px 60px rgba(36, 31, 13, 0.08);
+  --card-hover-shadow: 0 28px 80px rgba(36, 31, 13, 0.14);
+  --header-shadow: 0 18px 70px rgba(36, 31, 13, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--body-gradient), var(--background);
+  color: var(--foreground);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+@layer utilities {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .surface-border {
+    @apply border border-border bg-surface shadow-card;
+  }
+
+  .section-label {
+    @apply text-sm font-black uppercase tracking-[0.2em] text-accent;
+  }
+
+  .section-title {
+    @apply text-4xl font-black leading-tight text-foreground sm:text-5xl;
+  }
+
+  .body-copy {
+    @apply text-muted;
+  }
+
+  .theme-transition {
+    @apply transition-colors duration-300;
+  }
+
+  .hero-glow {
+    background: var(--hero-glow);
+  }
+
+  .mobile-menu-bg {
+    background: var(--header-menu-bg);
+  }
+
+  .footer-bg {
+    background: var(--footer-bg);
+  }
+
+  .theme-toggle-thumb {
+    transform: translateX(0);
+  }
+
+  .theme-toggle-moon {
+    color: var(--accent-foreground);
+  }
+
+  .theme-toggle-sun {
+    color: var(--muted);
+  }
+
+  :root[data-theme="light"] .theme-toggle-thumb {
+    transform: translateX(2.25rem);
+  }
+
+  :root[data-theme="light"] .theme-toggle-moon {
+    color: var(--muted);
+  }
+
+  :root[data-theme="light"] .theme-toggle-sun {
+    color: var(--accent-foreground);
+  }
+
+  .project-tone-gold {
+    background: linear-gradient(135deg, rgba(245, 208, 0, 0.24), rgba(245, 208, 0, 0.08), transparent);
+  }
+
+  .project-tone-sand {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(245, 208, 0, 0.16), transparent);
+  }
+
+  .project-tone-warm {
+    background: linear-gradient(135deg, rgba(245, 208, 0, 0.22), rgba(255, 255, 255, 0.08), transparent);
+  }
+
+  .project-tone-red {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.18), rgba(245, 208, 0, 0.12), transparent);
+  }
+
+  .project-tone-technical {
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.14), rgba(245, 208, 0, 0.12), transparent);
+  }
+
+  :root[data-theme="light"] .project-tone-gold {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(255, 255, 255, 0.72), transparent);
+  }
+
+  :root[data-theme="light"] .project-tone-sand {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(224, 177, 0, 0.14), transparent);
+  }
+
+  :root[data-theme="light"] .project-tone-warm {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(246, 244, 234, 0.9), transparent);
+  }
+
+  :root[data-theme="light"] .project-tone-red {
+    background: linear-gradient(135deg, rgba(153, 27, 27, 0.1), rgba(212, 175, 55, 0.13), transparent);
+  }
+
+  :root[data-theme="light"] .project-tone-technical {
+    background: linear-gradient(135deg, rgba(14, 116, 144, 0.1), rgba(212, 175, 55, 0.13), transparent);
+  }
+
+  .fade-up {
+    animation: fade-up 0.8s ease-out both;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
